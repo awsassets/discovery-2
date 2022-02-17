@@ -17,8 +17,8 @@ func TestDiscover(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if d[0].Target != "ac110003.addr.dc1.consul" {
-		t.Fatalf("want ac110003.addr.dc1.consul, got %v", d[0].Target)
+	if d[0].Target != "ac110003.addr.dc1.consul." {
+		t.Fatalf("want ac110003.addr.dc1.consul., got %v", d[0].Target)
 	}
 
 	if d[0].Address.String() != "172.17.0.3" {
