@@ -65,7 +65,7 @@ func (r *Resolver) Discover(ctx context.Context, service, proto, name string) ([
 	}
 
 	for _, s := range srv {
-		addr, err := r.getSingleIP(ctx, proto, s.Target)
+		addr, err := r.getSingleIP(ctx, s.Target)
 		if err != nil {
 			return nil, err
 		}
@@ -77,8 +77,8 @@ func (r *Resolver) Discover(ctx context.Context, service, proto, name string) ([
 }
 
 // getSingleIP returns single ip from given host
-func (r *Resolver) getSingleIP(ctx context.Context, network, host string) (net.IP, error) {
-	ip, err := r.LookupIP(ctx, network, host)
+func (r *Resolver) getSingleIP(ctx context.Context, host string) (net.IP, error) {
+	ip, err := r.LookupIP(ctx, "ip", host)
 	if err != nil {
 		return nil, err
 	}
