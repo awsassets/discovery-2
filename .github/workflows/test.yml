@@ -9,9 +9,15 @@ jobs:
   build:
     name: Test
     runs-on: ubuntu-latest
+    container: ubuntu
     services:
       consul:
         image: consul
+        ports:
+        - 8600:8600/udp
+        - 8500:8500/tcp
+        env:
+          CONSUL_BIND_INTERFACE: eth0
     steps:
       - name: Set up Go
         uses: actions/setup-go@v2
